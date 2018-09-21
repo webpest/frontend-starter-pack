@@ -1,13 +1,18 @@
 {
   "private": true,
+  "license": "MIT",
   "scripts": {
-    "start": "roadhog server",
+    "start": "cross-env NODE_ENV=development roadhog server",
+    "test": "jest",
+    "test:coverage": "yarn run test -- --coverage",
     "build": "cross-env NODE_ENV=production roadhog build",
-    "lint": "eslint --ext .js src test",
-    "lint:fix": "eslint --ext .js src test --fix",
+    "lint": "eslint --ext .js src __tests__",
+    "lint:fix": "eslint --ext .js src __tests__ --fix",
     "prettier": "prettier --write \"src/**/*.js\"",
     "format-code": "yarn run prettier && yarn run lint:fix",
     "precommit": "lint-staged",
+    "prepush": "yarn run lint && yarn run test",
+    "postinstall": "rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -19,6 +24,9 @@
   },
   "dependencies": {
     "dva": "^2.4.0",
+    "dva-loading": "^2.0.5",
+    "dva-model-extend": "^0.1.2",
+    "global": "^4.3.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1"
@@ -32,6 +40,8 @@
     "babel-plugin-dva-hmr": "^0.3.2",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.2.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
     "eslint-plugin-flowtype": "^2.34.1",
@@ -39,9 +49,11 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.12.0",
+    "jest": "^23.6.0",
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
     "redbox-react": "^1.4.3",
+    "redux-logger": "^3.0.6",
     "roadhog": "^2.0.0"
   }
 }

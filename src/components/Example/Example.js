@@ -1,7 +1,6 @@
 import React from "react";
 
 const Example = () => {
-  console.log("hello2");
   return <div>Example</div>;
 };
 
