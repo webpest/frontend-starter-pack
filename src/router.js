@@ -1,7 +1,5 @@
 import React from "react";
 import { Router } from "dva/router";
-// import dynamic from "dva/dynamic";
-// import App from "./routes/app";
 
 const registerModel = (app, model) => {
   if (
