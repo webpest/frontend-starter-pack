@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "dva";
-import styles from "./styles.scss";
+import styles from "./app.scss";
 
-const Index = () => (
+const App = () => (
   <div className={styles.page}>
     <h1>Frontend Starter Pack</h1>
   </div>
 );
 
-Index.propTypes = {};
+App.propTypes = {};
 
-export default connect()(Index);
+export default connect()(App);
